@@ -86,6 +86,3 @@ on property:twrp.all.users.decrypted=true
 on boot
      start boot-hal-1-1
      start health-hal-2-1
-teei_daemon
-start keymaster-4-0
-start gatekeeper-1-0
