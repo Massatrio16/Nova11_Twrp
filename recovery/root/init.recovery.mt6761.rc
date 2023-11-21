@@ -32,21 +32,18 @@ service keystore_auth /system/bin/keystore_auth
     seclabel u:r:recovery:s0
 
 service keystore /system/bin/keystore /tmp/misc/keystore
-    class main
     user root
     group root
 disabled
 seclabel u:r:recovery:s0
 
 service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
-class late_start
     user root
     group root
 disabled
     seclabel u:r:recovery:s0
 
 service keymaster-4-0 /vendor/bin/hw/android.hardware.keymaster@4.0-service.beanpod
-class early_hal
     user root
     group root drmrpc
 disabled
@@ -55,7 +52,6 @@ disabled
 service keymaster_attestation-1-1 /vendor/bin/hw/vendor.mediatek.hardware.keymaster_attestation@1.1-service
     interface vendor.mediatek.hardware.keymaster_attestation@1.0::IKeymasterDevice default
     interface vendor.mediatek.hardware.keymaster_attestation@1.1::IKeymasterDevice default
- class hal
     user root
     group root
     disabled
@@ -67,22 +63,25 @@ on property:vendor.sys.listener.registered=true
 on property:hwservicemanager.ready=true
     start keymaster-4-0
     start gatekeeper-1-0
+start keymaster-4-0
+start keymaster_attestation-1-1
    
 on property:ro.crypto.state=unsupported
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
-    
+    stop keymaster_attestation-1-1
+
 on property:ro.crypto.state=unencrypted
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
-        
+    stop keymaster_attestation-1-1
 on property:twrp.all.users.decrypted=true
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
-   
+   stop keymaster_attestation-1-1
 on boot
      start boot-hal-1-1
      start health-hal-2-1
