@@ -100,16 +100,16 @@ VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 99.87.36
 PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 
-# Additional binaries & libraries needed for recovery
-TARGET_RECOVERY_DEVICE_MODULES += \
-    libkeymaster4 \
-libsoftkeymasterdevice \
-    libpuresoftkeymasterdevice 
-
-TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
-$(TARGET_OUT_SHARED_LIBRARIES)/libsoftkeymasterdevice.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
+TW_RECOVERY_ADDITIONAL_RELINK_FILES += \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libkeymaster4support.so \
+    $(TARGET_OUT_VENDOR_EXECUTABLES)/hw/android.hardware.keymaster@4.0-service.beanpod \
+    $(TARGET_OUT_VENDOR_EXECUTABLES)/hw/vendor.mediatek.hardware.keymaster_attestation@1.1-service \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libkeymaster4.so \
+$(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw/vendor.mediatek.hardware.keymaster_attestation@1.1-impl.so \
+  .txgv    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.mediatek.hardware.keymaster_attestation@1.0.so \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.mediatek.hardware.keymaster_attestation@1.1.so 
+    
     
     
 # Properties
