@@ -90,7 +90,7 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 # Recovery
 
 # Crypto
-
+TW_INCLUDE_CRYPTO := true
 
 # # Hack: prevent anti roll back
 PLATFORM_SECURITY_PATCH := 2099-12-31
