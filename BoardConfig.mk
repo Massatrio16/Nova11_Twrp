@@ -59,7 +59,7 @@ BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
 BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_SECOND_OFFSET)
-#BOARD_MKBOOTIMG_ARGS += --board $(BOARD_NAME)
+BOARD_MKBOOTIMG_ARGS += --board $(BOARD_NAME)
 #AVB
 BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
@@ -90,8 +90,8 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 # Recovery
 
 # Crypto
-TW_INCLUDE_CRYPTO := true
-TW_USE_FSCRYPT_POLICY := 1
+
+
 # # Hack: prevent anti roll back
 PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := 2099-12-31
@@ -102,13 +102,11 @@ TW_RECOVERY_ADDITIONAL_RELINK_FILES += \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libkeymaster4support.so \
     $(TARGET_OUT_VENDOR_EXECUTABLES)/hw/android.hardware.keymaster@4.0-service.beanpod \
     $(TARGET_OUT_VENDOR_EXECUTABLES)/hw/vendor.mediatek.hardware.keymaster_attestation@1.1-service \
-$(TARGET_OUT_VENDOR_EXECUTABLES)/teei_daemon \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libkeymaster4.so \
-$(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
+$(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw/vendor.mediatek.hardware.keymaster_attestation@1.1-impl.so \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.mediatek.hardware.keymaster_attestation@1.0.so \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.mediatek.hardware.keymaster_attestation@1.1.so \
-$(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster-V2-ndk_platform.so
+  $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.mediatek.hardware.keymaster_attestation@1.0.so \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.mediatek.hardware.keymaster_attestation@1.1.so 
     
     
     
