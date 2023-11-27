@@ -14,7 +14,7 @@ system_ext /system_ext ext4 ro wait,avb,logical,first_stage_mount,
 vendor /vendor ext4 ro wait,avb,logical,first_stage_mount,
 
 
-product /product ext4 ro wait,avb,logical,first_stage_mount,                                    		/product               ext4                ro wait,slotselect,logical
+product /product ext4 ro wait,avb,logical,first_stage_mount
 
 # 178 "vendor/mediatek/proprietary/hardware/fstab/mt6761/fstab.in.mt6761"
 /dev/block/platform/bootdevice/by-name/md_udc /metadata ext4 noatime,nosuid,nodev,discard wait,check,formattable,first_stage_mount
